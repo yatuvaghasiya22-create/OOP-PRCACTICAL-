@@ -1,0 +1,45 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class StudentFileDemo {
+    public static void main(String[] args) {
+        PrintWriter writer = null;
+        BufferedReader reader = null;
+
+        try {
+            writer = new PrintWriter(new FileWriter("students.txt"));
+
+            writer.println("101 John 85");
+            writer.println("102 Emma 90");
+            writer.println("103 Alex 78");
+
+            writer.flush();
+
+            reader = new BufferedReader(new FileReader("students.txt"));
+
+            String line;
+            System.out.println("Student Records:");
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                System.out.println("Error closing resources: " + e.getMessage());
+            }
+        }
+    }
+}
