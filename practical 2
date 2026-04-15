@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class LinearEquationSolver {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter a, b, c, d, e, f: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+        double d = input.nextDouble();
+        double e = input.nextDouble();
+        double f = input.nextDouble();
+
+        double D = (a * d) - (b * c);
+
+        if (D == 0) {
+            System.out.println("The system has no unique solution.");
+        } else {
+            double Dx = (e * d) - (b * f);
+            double Dy = (a * f) - (c * e);
+
+            double x = Dx / D;
+            double y = Dy / D;
+
+            DecimalFormat format = new DecimalFormat("0.00");
+            System.out.println("x = " + format.format(x));
+            System.out.println("y = " + format.format(y));
+        }
+
+        input.close();
+    }
+}
