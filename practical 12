@@ -1,0 +1,26 @@
+public class VolumeCalculator {
+
+    public double calculateVolume(double side) {
+        return side * side * side;
+    }
+
+    public double calculateVolume(double length, double width, double height) {
+        return length * width * height;
+    }
+
+    public double calculateVolume(double radius, boolean isSphere) {
+        return (4.0 / 3.0) * Math.PI * radius * radius * radius;
+    }
+
+    public static void main(String[] args) {
+        VolumeCalculator calculator = new VolumeCalculator();
+
+        double cubeVolume = calculator.calculateVolume(5);
+        double rectangularVolume = calculator.calculateVolume(4, 3, 2);
+        double sphereVolume = calculator.calculateVolume(3, true);
+
+        System.out.println("Cube Volume: " + cubeVolume);
+        System.out.println("Rectangular Cube Volume: " + rectangularVolume);
+        System.out.println("Sphere Volume: " + sphereVolume);
+    }
+}
