@@ -1,0 +1,61 @@
+class BankAccount {
+    protected String accountNumber;
+    protected String accountHolderName;
+    protected double balance;
+
+    public void openAccount(String accountNumber, String accountHolderName, double balance) {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = balance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
+
+    public double checkBalance() {
+        return balance;
+    }
+}
+
+class SavingAccount extends BankAccount {
+    private double interestRate = 5.0;
+
+    public double calculateInterest() {
+        return (balance * interestRate) / 100;
+    }
+}
+
+class FixedDepositAccount extends BankAccount {
+    private double interestRate = 7.0;
+    private int years = 3;
+
+    public double maturityAmount() {
+        return balance + (balance * interestRate * years) / 100;
+    }
+}
+
+public class BankTest {
+    public static void main(String[] args) {
+        SavingAccount sa = new SavingAccount();
+        sa.openAccount("SA101", "John", 10000);
+        sa.deposit(5000);
+        sa.withdraw(2000);
+
+        System.out.println("Saving Account Balance: " + sa.checkBalance());
+        System.out.println("Interest: " + sa.calculateInterest());
+
+        FixedDepositAccount fda = new FixedDepositAccount();
+        fda.openAccount("FD201", "Emma", 20000);
+
+        System.out.println("Fixed Deposit Maturity Amount: " + fda.maturityAmount());
+    }
+}
