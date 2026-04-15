@@ -1,0 +1,28 @@
+interface Classify {
+    String getDivision(double average);
+}
+
+class Result implements Classify {
+    public String getDivision(double average) {
+        if (average >= 60) {
+            return "First Division";
+        } else if (average >= 50) {
+            return "Second Division";
+        } else if (average >= 40) {
+            return "Third Division";
+        } else {
+            return "Fail";
+        }
+    }
+}
+
+public class TestResult {
+    public static void main(String[] args) {
+        Result result = new Result();
+
+        System.out.println("Average: 75 -> " + result.getDivision(75));
+        System.out.println("Average: 55 -> " + result.getDivision(55));
+        System.out.println("Average: 45 -> " + result.getDivision(45));
+        System.out.println("Average: 30 -> " + result.getDivision(30));
+    }
+}
