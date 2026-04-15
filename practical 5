@@ -1,0 +1,25 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class TriangleAreaCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter three sides: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+
+        if (a + b > c && a + c > b && b + c > a) {
+            double s = (a + b + c) / 2.0;
+            double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+
+            DecimalFormat format = new DecimalFormat("0.00");
+            System.out.println("Area of triangle: " + format.format(area));
+        } else {
+            System.out.println("Invalid triangle sides.");
+        }
+
+        input.close();
+    }
+}
